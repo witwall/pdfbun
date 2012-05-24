@@ -78,6 +78,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ScrollLessFLP.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\eventlogInfo.ico" />
@@ -108,6 +111,10 @@
     <Content Include="GNU\tiff2pdf.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\RestartHS.png" />
+    <None Include="Resources\Flag_blueHS.png" />
+    <None Include="Resources\SaveAllHS.png" />
+    <None Include="Resources\Help.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

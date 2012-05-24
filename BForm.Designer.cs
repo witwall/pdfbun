@@ -24,9 +24,9 @@
         /// </summary>
         private void InitializeComponent() {
             this.tlpHint = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -35,17 +35,24 @@
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.bSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.bClear = new System.Windows.Forms.ToolStripMenuItem();
-            this.flpPages = new System.Windows.Forms.FlowLayoutPanel();
+            this.bConfirm = new System.Windows.Forms.ToolStripMenuItem();
+            this.bPer1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bClearSet = new System.Windows.Forms.ToolStripMenuItem();
+            this.flpPages = new ScrollLessFLP();
             this.fbdSave = new System.Windows.Forms.FolderBrowserDialog();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tlpHint.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.flowLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpHint
@@ -54,51 +61,54 @@
             this.tlpHint.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tlpHint.ColumnCount = 1;
             this.tlpHint.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpHint.Controls.Add(this.flowLayoutPanel3, 0, 2);
+            this.tlpHint.Controls.Add(this.flowLayoutPanel3, 0, 3);
+            this.tlpHint.Controls.Add(this.flowLayoutPanel4, 0, 2);
             this.tlpHint.Controls.Add(this.flowLayoutPanel1, 0, 0);
             this.tlpHint.Controls.Add(this.flowLayoutPanel2, 0, 1);
             this.tlpHint.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tlpHint.Location = new System.Drawing.Point(0, 498);
+            this.tlpHint.Location = new System.Drawing.Point(0, 476);
             this.tlpHint.Name = "tlpHint";
-            this.tlpHint.RowCount = 3;
+            this.tlpHint.RowCount = 4;
             this.tlpHint.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpHint.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpHint.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpHint.Size = new System.Drawing.Size(773, 66);
+            this.tlpHint.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpHint.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpHint.Size = new System.Drawing.Size(773, 88);
             this.tlpHint.TabIndex = 0;
             // 
-            // flowLayoutPanel3
+            // flowLayoutPanel4
             // 
-            this.flowLayoutPanel3.AutoSize = true;
-            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel3.Controls.Add(this.pictureBox3);
-            this.flowLayoutPanel3.Controls.Add(this.label3);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 44);
-            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(186, 22);
-            this.flowLayoutPanel3.TabIndex = 2;
+            this.flowLayoutPanel4.AutoSize = true;
+            this.flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel4.Controls.Add(this.pictureBox4);
+            this.flowLayoutPanel4.Controls.Add(this.label4);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(0, 44);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(190, 22);
+            this.flowLayoutPanel4.TabIndex = 3;
             // 
-            // pictureBox3
+            // pictureBox4
             // 
-            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.pictureBox3.Image = global::PDFBun.Properties.Resources.eventlogInfo;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
+            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox4.Image = global::PDFBun.Properties.Resources.eventlogInfo;
+            this.pictureBox4.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox4.TabIndex = 1;
+            this.pictureBox4.TabStop = false;
             // 
-            // label3
+            // label4
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(158, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Shift+左クリック…少し拡大表示";
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(162, 12);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "左でドラッグ＆ドロップ…入れ替え";
             // 
             // flowLayoutPanel1
             // 
@@ -170,7 +180,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bSave,
-            this.bClear});
+            this.bConfirm,
+            this.bPer1,
+            this.bClearSet});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(773, 24);
@@ -179,17 +191,35 @@
             // 
             // bSave
             // 
+            this.bSave.Image = global::PDFBun.Properties.Resources.SaveAllHS;
             this.bSave.Name = "bSave";
-            this.bSave.Size = new System.Drawing.Size(82, 20);
-            this.bSave.Text = "PDF保存する";
+            this.bSave.Size = new System.Drawing.Size(240, 20);
+            this.bSave.Text = "私が指示した通りに、PDFを保存してください";
             this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
-            // bClear
+            // bConfirm
             // 
-            this.bClear.Name = "bClear";
-            this.bClear.Size = new System.Drawing.Size(70, 20);
-            this.bClear.Text = "すべて消去";
-            this.bClear.Click += new System.EventHandler(this.bClear_Click);
+            this.bConfirm.Image = global::PDFBun.Properties.Resources.Help;
+            this.bConfirm.Name = "bConfirm";
+            this.bConfirm.Size = new System.Drawing.Size(106, 20);
+            this.bConfirm.Text = "その指示とは？";
+            this.bConfirm.Click += new System.EventHandler(this.bConfirm_Click);
+            // 
+            // bPer1
+            // 
+            this.bPer1.Image = global::PDFBun.Properties.Resources.Flag_blueHS;
+            this.bPer1.Name = "bPer1";
+            this.bPer1.Size = new System.Drawing.Size(115, 20);
+            this.bPer1.Text = "1頁1ファイル指定";
+            this.bPer1.Click += new System.EventHandler(this.bPer1_Click);
+            // 
+            // bClearSet
+            // 
+            this.bClearSet.Image = global::PDFBun.Properties.Resources.Flag_blueHS;
+            this.bClearSet.Name = "bClearSet";
+            this.bClearSet.Size = new System.Drawing.Size(186, 20);
+            this.bClearSet.Text = "すべて解除(削除・区切り・回転)";
+            this.bClearSet.Click += new System.EventHandler(this.bClearSet_Click);
             // 
             // flpPages
             // 
@@ -199,7 +229,7 @@
             this.flpPages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpPages.Location = new System.Drawing.Point(0, 24);
             this.flpPages.Name = "flpPages";
-            this.flpPages.Size = new System.Drawing.Size(773, 474);
+            this.flpPages.Size = new System.Drawing.Size(773, 452);
             this.flpPages.TabIndex = 2;
             this.flpPages.DragOver += new System.Windows.Forms.DragEventHandler(this.flpPages_DragEnter);
             this.flpPages.DragDrop += new System.Windows.Forms.DragEventHandler(this.flpPages_DragDrop);
@@ -208,7 +238,40 @@
             // 
             // fbdSave
             // 
-            this.fbdSave.Description = "PDF保存先を選択：";
+            this.fbdSave.Description = "どちらに保存しますか：";
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.AutoSize = true;
+            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel3.Controls.Add(this.pictureBox3);
+            this.flowLayoutPanel3.Controls.Add(this.label3);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 66);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(148, 22);
+            this.flowLayoutPanel3.TabIndex = 4;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox3.Image = global::PDFBun.Properties.Resources.eventlogInfo;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox3.TabIndex = 1;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Ctrl+左クリック…右回転";
             // 
             // BForm
             // 
@@ -225,9 +288,9 @@
             this.Load += new System.EventHandler(this.BForm_Load);
             this.tlpHint.ResumeLayout(false);
             this.tlpHint.PerformLayout();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -236,6 +299,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,9 +310,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tlpHint;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
@@ -255,9 +318,17 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem bSave;
-        private System.Windows.Forms.FlowLayoutPanel flpPages;
+        private ScrollLessFLP flpPages;
         private System.Windows.Forms.FolderBrowserDialog fbdSave;
-        private System.Windows.Forms.ToolStripMenuItem bClear;
+        private System.Windows.Forms.ToolStripMenuItem bPer1;
+        private System.Windows.Forms.ToolStripMenuItem bConfirm;
+        private System.Windows.Forms.ToolStripMenuItem bClearSet;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label3;
 
     }
 }
