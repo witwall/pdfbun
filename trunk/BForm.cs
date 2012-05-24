@@ -18,6 +18,8 @@ namespace PDFBun {
         }
 
         private void BForm_Load(object sender, EventArgs e) {
+            Text += " " + Application.ProductVersion;
+
             using (AH2 ah = new AH2())
                 foreach (String fp in alfs) {
                     AppendIt(fp);
@@ -68,7 +70,18 @@ namespace PDFBun {
                 Debug.Assert(p.ExitCode == 0, String.Format("PDFからサムネイル画像を作成する事に失敗しました。({0})", p.ExitCode));
                 for (int x = 1; ; x++) {
                     String fpJPG = prefixOut + "-" + x + ".jpg";
-                    if (!File.Exists(fpJPG)) break;
+                    if (!File.Exists(fpJPG)) {
+                        fpJPG = prefixOut + "-" + x.ToString("00") + ".jpg";
+                        if (!File.Exists(fpJPG)) {
+                            fpJPG = prefixOut + "-" + x.ToString("000") + ".jpg";
+                            if (!File.Exists(fpJPG)) {
+                                fpJPG = prefixOut + "-" + x.ToString("0000") + ".jpg";
+                                if (!File.Exists(fpJPG)) {
+                                    break;
+                                }
+                            }
+                        }
+                    }
                     Bitmap picJPG = new Bitmap(fpJPG);
                     Pane pane = new Pane();
                     pane.AutoSize = true;
@@ -113,6 +126,7 @@ namespace PDFBun {
                     if (new Rectangle(paneDst.Location, paneDst.Size).Contains(pt)) {
                         int i = flpPages.Controls.IndexOf(paneDst);
                         flpPages.Controls.SetChildIndex(paneSrc, i);
+                        flpPages.Refresh();
                         return;
                     }
                 }
@@ -122,6 +136,7 @@ namespace PDFBun {
         class Parm {
             public SortedDictionary<string, string> pdf2key = new SortedDictionary<string, string>();
             public String cat = "", input = "";
+            public List<int> frm = new List<int>();
 
             public String AddPDF(string pdf) {
                 String key;
@@ -154,19 +169,7 @@ namespace PDFBun {
                 return;
             String saveDir = fbdSave.SelectedPath;
 
-            Control.ControlCollection CC = flpPages.Controls;
-            List<Parm> parms = new List<Parm>();
-            parms.Add(new Parm());
-            for (int i = 0; i < CC.Count; i++) {
-                Pane pane = CC[i] as Pane;
-                if (pane.SplitFirst)
-                    parms.Add(new Parm());
-                if (pane.DeleteMe)
-                    continue;
-                Parm parm = parms[parms.Count - 1];
-                String k = parm.AddPDF(pane.fpSrc);
-                parm.cat += String.Format(" {0}{1}", k, pane.iPage);
-            }
+            List<Parm> parms = Decide();
 
             int total = 0, ok = 0;
 
@@ -215,6 +218,68 @@ namespace PDFBun {
 
         private void flpPages_DragLeave(object sender, EventArgs e) {
 
+        }
+
+        private void bPer1_Click(object sender, EventArgs e) {
+            foreach (Pane paneDst in flpPages.Controls) {
+                paneDst.SplitFirst = true;
+            }
+        }
+
+        private void bConfirm_Click(object sender, EventArgs e) {
+            List<Parm> parms = Decide();
+
+            StringWriter wr = new StringWriter();
+
+            wr.WriteLine("いま保存しますと、次のようになります：");
+            wr.WriteLine();
+            bool any = false;
+            int fno = 1;
+            foreach (Parm parm in parms) {
+                if (parm.cat.Length == 0)
+                    continue;
+                String frm = "";
+                foreach (int i in parm.frm) {
+                    if (frm.Length != 0)
+                        frm += " ";
+                    frm += String.Format("{0}", i);
+                }
+                wr.WriteLine(fno + "つ目のPDFファイルを、" + frm + " から作成します。");
+                wr.WriteLine();
+                fno++;
+                any = true;
+            }
+            if (!any) {
+                wr.GetStringBuilder().Length = 0;
+                wr.WriteLine("ページが無いので、何も保存しません。");
+            }
+
+            MessageBox.Show(this, wr.ToString(), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private List<Parm> Decide() {
+            Control.ControlCollection CC = flpPages.Controls;
+            List<Parm> parms = new List<Parm>();
+            parms.Add(new Parm());
+            for (int i = 0; i < CC.Count; i++) {
+                Pane pane = CC[i] as Pane;
+                if (pane.SplitFirst)
+                    parms.Add(new Parm());
+                if (pane.DeleteMe)
+                    continue;
+                Parm parm = parms[parms.Count - 1];
+                String k = parm.AddPDF(pane.fpSrc);
+                parm.cat += String.Format(" {0}{1}{2}", k, pane.iPage, "NRDL"[pane.RRot]);
+                parm.frm.Add(pane.iPage);
+            }
+
+            return parms;
+        }
+
+        private void bClearSet_Click(object sender, EventArgs e) {
+            foreach (Pane paneDst in flpPages.Controls) {
+                paneDst.ResetCustom();
+            }
         }
     }
 }
