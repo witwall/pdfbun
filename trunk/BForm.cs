@@ -19,11 +19,17 @@ namespace PDFBun {
 
         private void BForm_Load(object sender, EventArgs e) {
             Text += " " + Application.ProductVersion;
+            Show();
+            Update();
 
             using (AH2 ah = new AH2())
+            using (WaitNow wn = new WaitNow()) {
+                wn.Cover(this);
                 foreach (String fp in alfs) {
                     AppendIt(fp);
                 }
+                Application.DoEvents();
+            }
         }
 
         private void flpPages_DragEnter(object sender, DragEventArgs e) {
@@ -60,6 +66,7 @@ namespace PDFBun {
         int W = 250;
 
         private void AppendIt(string fp) {
+            Int64 cbPDF = new FileInfo(fp).Length;
             if (String.Compare(".pdf", Path.GetExtension(fp), true) == 0) {
                 String prefixOut = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
                 ProcessStartInfo psi = new ProcessStartInfo(EUt.pdftoppm, " -scale-to " + W + " -jpeg \"" + fp + "\" \"" + prefixOut + "\" ");
@@ -68,6 +75,7 @@ namespace PDFBun {
                 Process p = Process.Start(psi);
                 p.WaitForExit();
                 Debug.Assert(p.ExitCode == 0, String.Format("PDFからサムネイル画像を作成する事に失敗しました。({0})", p.ExitCode));
+                List<Pane> perPDF = new List<Pane>();
                 for (int x = 1; ; x++) {
                     String fpJPG = prefixOut + "-" + x + ".jpg";
                     if (!File.Exists(fpJPG)) {
@@ -91,7 +99,11 @@ namespace PDFBun {
                     pane.iPage = x;
                     pane.Name = Guid.NewGuid().ToString("N");
                     pane.ThumbnailWidth = W + 2;
+                    perPDF.Add(pane);
                     flpPages.Controls.Add(pane);
+                }
+                foreach (Pane pane in perPDF) {
+                    pane.cbSave = cbPDF / perPDF.Count;
                 }
                 if (String.IsNullOrEmpty(fbdSave.SelectedPath)) {
                     fbdSave.SelectedPath = Path.GetDirectoryName(fp);
@@ -105,6 +117,9 @@ namespace PDFBun {
                 Process p = Process.Start(psi);
                 p.WaitForExit();
                 Debug.Assert(p.ExitCode == 0, String.Format("TIFFからPDFへの変換に失敗しました。({0})", p.ExitCode));
+                if (String.IsNullOrEmpty(fbdSave.SelectedPath)) {
+                    fbdSave.SelectedPath = Path.GetDirectoryName(fp);
+                }
                 AppendIt(fppdf);
             }
         }
@@ -175,6 +190,8 @@ namespace PDFBun {
 
             int c = 1;
             using (AH2 ah2 = new AH2())
+            using (WaitNow wn = new WaitNow()) {
+                wn.Cover(this);
                 foreach (Parm parm in parms) {
                     if (parm.cat.Length == 0)
                         continue;
@@ -197,6 +214,7 @@ namespace PDFBun {
                     total++;
                     ok += (p.ExitCode == 0) ? 1 : 0;
                 }
+            }
 
             if (total == 0) {
                 MessageBox.Show(this, "何も保存していません。", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -279,6 +297,21 @@ namespace PDFBun {
         private void bClearSet_Click(object sender, EventArgs e) {
             foreach (Pane paneDst in flpPages.Controls) {
                 paneDst.ResetCustom();
+            }
+        }
+
+        private void bPerPages_Click(object sender, EventArgs e) {
+            using (PPForm form = new PPForm()) {
+                foreach (Pane p in flpPages.Controls)
+                    if (!p.DeleteMe)
+                        form.AddPane(p);
+                if (form.ShowDialog(this) == DialogResult.OK) {
+                    int x = 1;
+                    foreach (Pane pane in form.panes) {
+                        pane.SplitFirst = (form.splits.Contains(x - 1));
+                        x++;
+                    }
+                }
             }
         }
     }

@@ -9,8 +9,8 @@
 
 !define APP "PDFBun"
 !define COM "HIRAOKA HYPERS TOOLS, Inc."
-!define VER "0.3"
-!define APV "0_3"
+!define VER "0.4"
+!define APV "0_4"
 
 !define PROGID "HHT.PDFBun"
 
