@@ -18,6 +18,7 @@ namespace PDFBun {
 
         public String fpSrc = String.Empty;
         public int iPage = 0;
+        public Int64 cbSave = 0;
 
         Bitmap ima = null;
 

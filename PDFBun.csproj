@@ -49,6 +49,12 @@
     <Compile Include="Pane.Designer.cs">
       <DependentUpon>Pane.cs</DependentUpon>
     </Compile>
+    <Compile Include="PPForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PPForm.Designer.cs">
+      <DependentUpon>PPForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BForm.resx">
@@ -59,10 +65,18 @@
       <SubType>Designer</SubType>
       <DependentUpon>Pane.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PPForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PPForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitNow.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WaitNow.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -80,6 +94,12 @@
     </Compile>
     <Compile Include="ScrollLessFLP.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WaitNow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WaitNow.Designer.cs">
+      <DependentUpon>WaitNow.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +131,7 @@
     <Content Include="GNU\tiff2pdf.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Page1.png" />
     <None Include="Resources\RestartHS.png" />
     <None Include="Resources\Flag_blueHS.png" />
     <None Include="Resources\SaveAllHS.png" />
